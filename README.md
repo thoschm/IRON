@@ -1,7 +1,12 @@
 # IRON
-IRON: A Fast Interest Point Descriptor for Robust NDT-Map Matching and Its Application to Robot Localization
+IRON: A Fast Interest Point Descriptor for Robust NDT-Map Matching - Reference Implementation
 
-IRON Reference Implementation:
+
+
+
+
+
+For algorithmic details and benchmarking results please refer to the original paper:
 *************************************************************************************************************
 Schmiedel, Th., Einhorn, E., Gross, H.-M.
 IRON: A Fast Interest Point Descriptor for Robust NDT-Map Matching and Its Application to Robot Localization.
