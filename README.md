@@ -8,7 +8,7 @@ IRON: A Fast Interest Point Descriptor for Robust NDT-Map Matching - Reference I
 - Almost any given point cloud format can be directly used without expensive point cloud type conversion beforehand (see src/demo.cpp for an example)
 - It's robust and insensitive to a large initial displacement between two point clouds (e.g. they were captured from different locations)
 - IRON uses NDT-maps as an efficient 3D data structure and is able the create them with sufficient accuracy in about 3 ms
-- The complete alignment process takes only 10-20 ms on a single core of a modern i7 CPU (depending on registration parameters and map sizes)
+- The complete alignment process takes only 10-20 ms on a single core of a modern i7 CPU (depending on registration parameters and map sizes) and is therefore well suited for real-time applications
 
 **For algorithmic details and benchmarking results please refer to the original paper:**
 *************************************************************************************************************
