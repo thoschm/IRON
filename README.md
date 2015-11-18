@@ -1,6 +1,8 @@
 # IRON
 IRON: A Fast Interest Point Descriptor for Robust NDT-Map Matching - Reference Implementation
 
+![alt tag](https://raw.github.com/thoschm/IRON/master/img/img1.png)
+
 Features:
 - IRON provides a simple interface for the alignment of 3D point clouds using 6 degrees of freedom (x, y, z, roll, pitch, yaw)
 - Almost any given point cloud format can be directly used without expensive point cloud type conversion beforehand (see src/demo.cpp for an example)
@@ -14,11 +16,9 @@ Schmiedel, Th., Einhorn, E., Gross, H.-M.
 IRON: A Fast Interest Point Descriptor for Robust NDT-Map Matching and Its Application to Robot Localization.
 IEEE/RSJ Int. Conf. on Intelligent Robots and Systems (IROS), Hamburg, Germany, 2015
 *************************************************************************************************************
-Copyright (C) 2015, Thomas Schmiedel (thomas.schmiedel@tu-ilmenau.de)
 
 You may also visit my [research page](http://research.thomas-schmiedel.com/?page_id=35) for a thorough introduction.
  
-![alt tag](https://raw.github.com/thoschm/IRON/master/img/img1.png)
  
 Required packages (Linux Mint 17.1; please install equivalent packages for your Linux distribution):
 - build-essential
@@ -41,4 +41,4 @@ How to use IRON registration pipeline?
 
 
 Please contact me if you have any questions!
-
+(thomas.schmiedel@tu-ilmenau.de)
