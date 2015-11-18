@@ -8,6 +8,8 @@ IRON: A Fast Interest Point Descriptor for Robust NDT-Map Matching and Its Appli
 IEEE/RSJ Int. Conf. on Intelligent Robots and Systems (IROS), Hamburg, Germany, 2015
 *************************************************************************************************************
 Copyright (C) 2015, Thomas Schmiedel (thomas.schmiedel@tu-ilmenau.de)
+
+You may also visit my [research page](http://research.thomas-schmiedel.com/?page_id=35) for a thorough introduction.
  
 ![alt tag](https://raw.github.com/thoschm/IRON/master/img/img1.png)
  
