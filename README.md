@@ -9,6 +9,7 @@ IEEE/RSJ Int. Conf. on Intelligent Robots and Systems (IROS), Hamburg, Germany, 
 *************************************************************************************************************
 Copyright (C) 2015, Thomas Schmiedel (thomas.schmiedel@tu-ilmenau.de)
  
+![alt tag](https://raw.github.com/thoschm/IRON/master/img/img1.png)
  
 Required packages (Linux Mint 17.1; please install equivalent packages for your Linux distribution):
 - build-essential
