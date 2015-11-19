@@ -6,7 +6,7 @@ IRON: A Fast Interest Point Descriptor for Robust NDT-Map Matching - Reference I
 **Features:**
 - IRON provides a simple interface for the alignment of 3D point clouds using 6 degrees of freedom (x, y, z, roll, pitch, yaw)
 - Almost any given point cloud format can be directly used without expensive point cloud type conversion beforehand (see src/demo.cpp for an example)
-- It's robust and insensitive to a large initial displacement between two point clouds (e.g. they were captured from different locations)
+- It's robust and insensitive to a large initial displacement between two point clouds (e.g. when they were captured from different locations)
 - IRON uses NDT-maps as an efficient 3D data structure and is able to create them with sufficient accuracy in about 3 ms (average conversion time for a typical Kinect 1 / Asus Xtion point cloud)
 - The complete alignment process takes only 10-20 ms on a single core of a modern i7 CPU (depending on registration parameters and map sizes) and is therefore well suited for real-time applications
 
