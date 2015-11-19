@@ -20,7 +20,7 @@ IEEE/RSJ Int. Conf. on Intelligent Robots and Systems (IROS), Hamburg, Germany, 
 You may also visit my [research page](http://research.thomas-schmiedel.com/?page_id=35) for a thorough introduction.
  
  
-**Required packages** (Linux Mint 17.1; please install equivalent packages for your Linux distribution):
+**Required packages** (Ubuntu 14.04; please install equivalent packages for your Linux distribution):
 - build-essential
 - libeigen3-dev 
 - gnuplot-x11 
