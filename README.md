@@ -35,7 +35,7 @@ You may also visit my [research page](http://research.thomas-schmiedel.com/?page
 - ./plot_result.sh
 
 
-**How to use IRON registration pipeline?**
+**How to use the IRON registration pipeline?**
 - just include IRON.h into your project
 - have a look at src/demo.cpp for a detailed explanation
 
