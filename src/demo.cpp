@@ -370,7 +370,7 @@ int main(int argc, char **argv)
               << "run: ./plot_means_keypoints.sh to plot both maps and final matches\n"
               << "run: ./plot_result.sh to plot both maps after alignment\n"
               << "run: ./plot_covs_keypoints.sh to view map covariances\n"
-              << "(please note: you will gnuplot-x11 for this to work)\n";
+              << "(please note: you will need gnuplot-x11 for this to work)\n";
 
     return EXIT_SUCCESS;
 }
