@@ -41,7 +41,7 @@
 ////////////////////////////////////////
 namespace IRON
 {
-#define IRON_LOG2(_x) (std::log((NumericalType)_x) * (NumericalType)3.32192809489)
+#define IRON_LOG(_x) (std::log((NumericalType)_x) * (NumericalType)3.32192809489) // base e
 
 
 ////////////////////////////////////////
@@ -168,7 +168,7 @@ public:
         }
     }
 
-    NumericalType acos(NumericalType value)
+    NumericalType acos(NumericalType value) const
     {
         if (value < (NumericalType)-1.0) { value = (NumericalType)-1.0; }
         else if (value > (NumericalType)1.0) { value = (NumericalType)1.0; }
@@ -267,7 +267,7 @@ public:
 
     // compute descriptors and keypoints
     void computeDescriptors(typename IRONDescriptorVector<NumericalType>::type *vec,
-                            const NDTMapLite<NumericalType> &map)
+                            const NDTMapLite<NumericalType> &map) const
     {
         // prepare
         vec->clear();
@@ -413,7 +413,7 @@ public:
         // nn search is done, now throw away nodes with k=0 or low a-histo-entropy
         NumericalType entropy, p;
         const NumericalType entthres = mConfig.entropyThreshold,
-                            norment  = (NumericalType)-1.0 / IRON_LOG2((NumericalType)shift);
+                            norment  = (NumericalType)-1.0 / IRON_LOG((NumericalType)shift);
         for (uint i = 0; i < vec->size(); )
         {
             // if not enough neighbors, skip
@@ -429,7 +429,7 @@ public:
             {
                 p = vec->at(i).h[e];
                 if (p == (NumericalType)0.0) continue;
-                entropy += p * IRON_LOG2(p);
+                entropy += p * IRON_LOG(p);
             }
 
             // normalize
@@ -450,7 +450,7 @@ public:
     }
 
     // free memory
-    void releaseDescriptors(typename IRONDescriptorVector<NumericalType>::type *vec)
+    void releaseDescriptors(typename IRONDescriptorVector<NumericalType>::type *vec) const
     {
         for (int i = vec->size() - 1; i >= 0; --i)
         {
@@ -459,7 +459,7 @@ public:
     }
 
     // print descriptor information
-    void printDescriptor(const IRONDescriptor<NumericalType> &vec)
+    void printDescriptor(const IRONDescriptor<NumericalType> &vec) const
     {
         std::cerr << std::setw(4) << std::setprecision(2) << std::fixed;
         std::cerr << "MU    : " << vec.mu()(0) << ", " << vec.mu()(1) << ", " << vec.mu()(2) << std::endl
@@ -640,7 +640,7 @@ public:
 
 
     // compute transform from inlierset
-    IRONTransformResult<NumericalType> computeTransform(const typename IRONMatchVector<NumericalType>::type &inlierset)
+    IRONTransformResult<NumericalType> computeTransform(const typename IRONMatchVector<NumericalType>::type &inlierset) const
     {
         IRONTransformResult<NumericalType> result;
 
@@ -701,7 +701,7 @@ public:
 
 private:
     NumericalType limitedAngle(const Eigen::Matrix<NumericalType, 3, 1> &v1,
-                               const Eigen::Matrix<NumericalType, 3, 1> &v2)
+                               const Eigen::Matrix<NumericalType, 3, 1> &v2) const
     {
         // vectors MUST be normalized
         const NumericalType angle = mACLUT.acos(v1.dot(v2));
@@ -714,7 +714,7 @@ private:
 
     // quickly remove descriptor
     void remove(typename IRONDescriptorVector<NumericalType>::type *vec,
-                uint idx)
+                uint idx) const
     {
         // free memory
         delete[] vec->at(idx).h;
@@ -731,7 +731,7 @@ private:
 
     // get 3D rotation matrix from two normalized vectors
     Eigen::Matrix<NumericalType, 3, 3> rotFromVectors(const Eigen::Matrix<NumericalType, 3, 1> &v1,
-                                                      const Eigen::Matrix<NumericalType, 3, 1> &v2)
+                                                      const Eigen::Matrix<NumericalType, 3, 1> &v2) const
     {
         // vectors MUST be normalized
         const Eigen::Matrix<NumericalType, 3, 1> v = v1.cross(v2);

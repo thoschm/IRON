@@ -479,25 +479,25 @@ public:
 
 private:
     // quick vector norm
-    void normalize_fast(Eigen::Matrix<NumericalType, 3, 1> &vec)
+    void normalize_fast(Eigen::Matrix<NumericalType, 3, 1> &vec) const
     {
         vec *= invsqrt_fast(vec(0) * vec(0) + vec(1) * vec(1) + vec(2) * vec(2));
     }
 
     // normalize from given dist squared
-    void normalize_fast_from_sqr(Eigen::Matrix<NumericalType, 3, 1> &vec, const NumericalType normsqr)
+    void normalize_fast_from_sqr(Eigen::Matrix<NumericalType, 3, 1> &vec, const NumericalType normsqr) const
     {
         vec *= invsqrt_fast(normsqr);
     }
 
     // norm squared
-    NumericalType norm_sqr(const Eigen::Matrix<NumericalType, 3, 1> &vec)
+    NumericalType norm_sqr(const Eigen::Matrix<NumericalType, 3, 1> &vec) const
     {
         return vec(0) * vec(0) + vec(1) * vec(1) + vec(2) * vec(2);
     }
 
     // must remain float (=32 bit)
-    float invsqrt_fast(const float val)
+    float invsqrt_fast(const float val) const
     {
         union { float f; uint32_t u; } tmp;
         tmp.f = val;
@@ -506,7 +506,7 @@ private:
     }
 
     // compute mean
-    Eigen::Matrix<NumericalType, 3, 1> mean(const std::vector<const Eigen::Matrix<NumericalType, 3, 1> *> &samples)
+    Eigen::Matrix<NumericalType, 3, 1> mean(const std::vector<const Eigen::Matrix<NumericalType, 3, 1> *> &samples) const
     {
         Eigen::Matrix<NumericalType, 3, 1> res((NumericalType)0.0, (NumericalType)0.0, (NumericalType)0.0);
         for (uint i = 0; i < samples.size(); ++i)
@@ -518,7 +518,7 @@ private:
 
     // compute cov
     Eigen::Matrix<NumericalType, 3, 3> cov(const std::vector<const Eigen::Matrix<NumericalType, 3, 1> *> &samples,
-                                           const Eigen::Matrix<NumericalType, 3, 1> &mean)
+                                           const Eigen::Matrix<NumericalType, 3, 1> &mean) const
     {
         Eigen::Matrix<NumericalType, 3, 3> res;
         res.setZero();
@@ -535,7 +535,7 @@ protected:
     NDTLiteConfig mConfig;
     XorShift mRnd;
     CircularLUT<NumericalType> mNlut;
-    std::vector<Eigen::Matrix<NumericalType, 3, 1> > mNoiseVec; // for Vector3f we can do this
+    std::vector<Eigen::Matrix<NumericalType, 3, 1> > mNoiseVec; // for Vector3 we can do this
     std::vector<std::vector<const Eigen::Matrix<NumericalType, 3, 1> *> > mGrid;
     uint mAlloc;
 };
