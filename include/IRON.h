@@ -23,6 +23,9 @@
 */
 
 
+// TODO: uint -> size_t
+
+
 #ifndef IRON_H_
 #define IRON_H_
 
@@ -270,7 +273,7 @@ public:
                             const NDTMapLite<NumericalType> &map) const
     {
         // prepare
-        vec->clear();
+        releaseDescriptors(vec);
         const uint bins = 2u * mConfig.angleBins * mConfig.distanceBins;
         Eigen::SelfAdjointEigenSolver<Eigen::Matrix<NumericalType, 3, 3> > esolver;
         const NumericalType minev = mConfig.minEV1EV2Ratio,
@@ -452,7 +455,7 @@ public:
     // free memory
     void releaseDescriptors(typename IRONDescriptorVector<NumericalType>::type *vec) const
     {
-        for (int i = vec->size() - 1; i >= 0; --i)
+        for (int i = (int)(vec->size()) - 1; i >= 0; --i)
         {
             remove(vec, i);
         }
