@@ -472,8 +472,8 @@ public:
             // skip with few points
             if (mGrid[i].size() < mConfig.minPointsPerCell) continue;
             map->cells.push_back(NDTCellLite<NumericalType>());
-            map->cells.back().mu = mean(mGrid[i]);
-            map->cells.back().cov = cov(mGrid[i], map->cells.back().mu);
+            mean(&(map->cells.back().mu), mGrid[i]);
+            cov(&(map->cells.back().cov), mGrid[i], map->cells.back().mu);
         }
     }
 
@@ -506,29 +506,30 @@ private:
     }
 
     // compute mean
-    Eigen::Matrix<NumericalType, 3, 1> mean(const std::vector<const Eigen::Matrix<NumericalType, 3, 1> *> &samples) const
+    void mean(Eigen::Matrix<NumericalType, 3, 1> *res,
+              const std::vector<const Eigen::Matrix<NumericalType, 3, 1> *> &samples) const
     {
-        Eigen::Matrix<NumericalType, 3, 1> res((NumericalType)0.0, (NumericalType)0.0, (NumericalType)0.0);
+        res->setZero();
         for (uint i = 0; i < samples.size(); ++i)
         {
-            res += *(samples[i]);
+            *res += *(samples[i]);
         }
-        return res / samples.size();
+        *res /= samples.size();
     }
 
     // compute cov
-    Eigen::Matrix<NumericalType, 3, 3> cov(const std::vector<const Eigen::Matrix<NumericalType, 3, 1> *> &samples,
-                                           const Eigen::Matrix<NumericalType, 3, 1> &mean) const
+    void cov(Eigen::Matrix<NumericalType, 3, 3> *res,
+             const std::vector<const Eigen::Matrix<NumericalType, 3, 1> *> &samples,
+             const Eigen::Matrix<NumericalType, 3, 1> &mean) const
     {
-        Eigen::Matrix<NumericalType, 3, 3> res;
-        res.setZero();
+        res->setZero();
         Eigen::Matrix<NumericalType, 3, 1> d;
         for (uint i = 0; i < samples.size(); ++i)
         {
             d = *(samples[i]) - mean;
-            res += d * d.transpose();
+            *res += d * d.transpose();
         }
-        return res / samples.size();
+        *res /= samples.size();
     }
 
 protected:
