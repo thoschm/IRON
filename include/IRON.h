@@ -284,7 +284,7 @@ public:
         for (uint i = 0; i < map.cells.size(); ++i)
         {
             // compute eigenvalues
-            esolver.compute(map.cells[i].cov);
+            esolver.compute(map.cells[i].cov); //TODO: evaluate computeDirect()
 
             // check cell shape
             if (esolver.eigenvalues()(0) / esolver.eigenvalues()(1) > maxev ||
