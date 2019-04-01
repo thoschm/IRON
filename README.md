@@ -42,4 +42,4 @@ You may also visit my [research page](http://research.thomas-schmiedel.com/?page
 
 **Please contact me if you have any questions!**
 
-schmiedel.tho<AT>gmail.com
+schmiedel.tho(AT)gmail.com
